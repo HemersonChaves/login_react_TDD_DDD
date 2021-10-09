@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Hemerson Chaves <hemersonchaves20@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.3",
