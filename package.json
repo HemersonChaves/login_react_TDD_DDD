@@ -5,7 +5,9 @@
   "author": "Hemerson Chaves <hemersonchaves20@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
+    "test:watch": "yarn test -- --watch",
+    "test:staged": "yarn test -- --findRelatedTests",
     "commit": "git-cz"
   },
   "devDependencies": {
