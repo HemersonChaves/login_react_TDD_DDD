@@ -1,4 +1,4 @@
-import { IHttpPostClient, HttpPostParams } from "../protocols/http/HttpPostClient";
+import { IHttpPostClient, HttpPostParams } from "@/data/protocols/http/HttpPostClient";
 
 class HttpPostClientSpy implements IHttpPostClient{
     url?:string;

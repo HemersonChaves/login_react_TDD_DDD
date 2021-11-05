@@ -9,6 +9,9 @@
     "jsx": "react",
     "rootDir": "./",
     "baseUrl": "./src",
+    "paths":{
+      "@/*": ["*"]
+    },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
