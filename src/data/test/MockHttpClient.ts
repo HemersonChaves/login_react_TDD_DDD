@@ -1,6 +1,4 @@
-import { IHttpPostClient, HttpPostParams } from "@/data/protocols/http/HttpPostClient";
-import { HttpResponse } from "@/data/protocols/http/HttpResponse";
-import { HttpStatusCode } from "../protocols/http/HttpResponse";
+import { IHttpPostClient, HttpPostParams, HttpResponse, HttpStatusCode } from "../protocols/http";
 
 class HttpPostClientSpy<T, R> implements IHttpPostClient<T, R>{
     url?:string;
