@@ -8,4 +8,4 @@ interface IAuthentication{
     auth(params: AuthenticationParams): Promise<AccountModel>
 }
 
-export { IAuthentication };
+export { IAuthentication,AuthenticationParams };
