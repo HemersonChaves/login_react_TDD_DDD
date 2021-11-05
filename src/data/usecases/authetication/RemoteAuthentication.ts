@@ -1,16 +1,16 @@
- import { AuthenticationParams } from "@/domain/usecases/Authentication";
-import { IHttpPostClient, HttpPostParams } from "@/data/protocols/http/HttpPostClient";
+ import { AuthenticationParams, IAuthentication } from "@/domain/usecases/Authentication";
+import { IHttpPostClient} from "@/data/protocols/http/HttpPostClient";
 import { HttpStatusCode } from "@/data/protocols/http/HttpResponse";
 import { InvalidCredentialsError } from "@/domain/erros/InvalidCredentialsError";
 import { UnexpectedError } from "@/domain/erros/UnexpectedError";
 import { AccountModel } from "@/domain/models/AccountModel";
 
-class RemoteAuthentication{
+class RemoteAuthentication implements IAuthentication {
     constructor (
         private readonly url: string,
         private readonly httpPostClient: IHttpPostClient<AuthenticationParams, AccountModel>
     ){}
-    async auth (params: AuthenticationParams): Promise<void>{
+    async auth (params: AuthenticationParams): Promise<AccountModel> {
        
         const httpResponse = await this.httpPostClient.post(
             {
@@ -18,12 +18,9 @@ class RemoteAuthentication{
                 body: params
             });
         switch (httpResponse.statusCode) {
-            case HttpStatusCode.ok: break;
+            case HttpStatusCode.ok: return httpResponse.body;
             case HttpStatusCode.unathorized: throw new InvalidCredentialsError();
-            case HttpStatusCode.badRequest: throw new UnexpectedError();
-            case HttpStatusCode.serverError: throw new UnexpectedError();
-            case HttpStatusCode.notFound: throw new UnexpectedError();
-            default: return Promise.resolve();
+            default:  throw new UnexpectedError();
         }
     }
       
