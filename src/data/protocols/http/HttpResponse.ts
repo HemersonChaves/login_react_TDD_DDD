@@ -1,3 +1,6 @@
+/**
+ * Respostas possíveis Http e seus status code
+ */
 enum HttpStatusCode{
     ok =200,    
     noContent = 204,
@@ -6,6 +9,10 @@ enum HttpStatusCode{
     notFound = 404,
     serverError = 500
 }
+/**
+ * tipo generico de resposta http com bady distintos
+ *  
+ */
 type HttpResponse<T> = {
     statusCode:HttpStatusCode
     body?: T
